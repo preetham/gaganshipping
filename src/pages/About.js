@@ -47,7 +47,7 @@ function About() {
   return (
     <Grid container justif="center" alignItems="center">
         <Grid item >
-            <Typography align="center" variant="h4">GAGAN SHIPPING SERVICES</Typography>
+            <Typography align="center" style={{fontWeight: "bold"}} variant="h4">GAGAN SHIPPING SERVICES</Typography>
             <Box p={3}>
               <Typography className={classes.quote} align="center" variant="subtitle1">{quote}</Typography>
             </Box>

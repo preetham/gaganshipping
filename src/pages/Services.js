@@ -12,17 +12,28 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
-    // height: 224,
+  },
+  indicator: {
+    backgroundColor: '#fec100'
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
+    display: 'inline-table',
   },
 }));
 
+const tabs = {
+  0: PortAgency,
+  1: Chartering,
+  2: CrewHandling,
+  3: Husbandry,
+  4: Bunkering,
+}
+
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { value, index, ...other } = props;
   return (
-    <div
+    <Box
       role="tabpanel"
       hidden={value !== index}
       id={`vertical-tabpanel-${index}`}
@@ -30,11 +41,9 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box>
-          {children}
-        </Box>
+        tabs[index]()
       )}
-    </div>
+    </Box>
   );
 }
 
@@ -52,8 +61,9 @@ function Services() {
                 value={value}
                 onChange={handleChange}
                 className={classes.tabs}
+                classes={{indicator: classes.indicator}}
               >
-                <Tab label="Port Agency" />
+                <Tab label="Port Agency"/>
                 <Tab label="Chartering" />
                 <Tab label="Crew Handling"/>
                 <Tab label="Husbandry"/>

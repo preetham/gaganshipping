@@ -1,100 +1,141 @@
 import React from 'react';
-import { AppBar, Container, Grid, Tab, Tabs } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Switch, Route, Link, useLocation } from "react-router-dom";
+import { Box, AppBar, Grid, Tab, Tabs, Typography } from '@material-ui/core';
+import { makeStyles, responsiveFontSizes, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Gallery from './pages/Gallery';
 import Services from './pages/Services';
+import logoImg from './static/logo.png';
+import qrCodeImg from './static/qrcode.png';
 
 const useStyles = makeStyles({
   root: {
     background: '#fff',
     border: 0,
     borderRadius: 3,
-    color: 'black',
+    color: '#1f4da1',
     height: 48,
     padding: '0 30px',
   },
   indicator: {
-    backgroundColor: '#fec100',
+    backgroundColor: '#fec100'
   },
   tabText: {
     '&:hover': {
+      color: '#021e52',
+    },
+    '&:focus': {
       color: '#fec100',
     },
-    '&$selected': {
-      color: '#fec100'
-    },
+  },
+  topHeading: {
+    color: '#fec100',
+    fontWeight: 'bold',
+    marginTop: '1.4rem',
+  },
+  logo: {
+    height: '6rem',
   },
 });
-
-const pages = {
-  1: About,
-  2: Services,
-  3: Gallery,
-  4: Contact,
-};
-
-function LinkTab(props) {
-  return (
-    <Tab
-      component="a"
-      onClick={(event) => {
-        event.preventDefault();
-      }}
-      {...props}
-    />
-  );
-}
-
-function TabPanel(props) {
-  const { index } = props;
-  return (
-  <div>
-    {pages[index]()}
-  </div>
-  );
-}
 
 
 function App() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  const location = useLocation();
+  let theme = createMuiTheme();
+  theme = responsiveFontSizes(theme);
+  const tabs = [
+    {
+      route: '/',
+      name: 'Home',
+      component: Home(),
+    },
+    {
+      route: '/about',
+      name: 'Who We Are',
+      component: About(),
+    },
+    {
+      route: '/services',
+      name: 'Services',
+      component: Services(),
+    },
+    {
+      route: '/gallery',
+      name: 'Gallery',
+      component: Gallery(),
+    },
+    {
+      route: '/contact',
+      name: 'Contact Us',
+      component: Contact(),
+    },
+  ];
+
   return (
-    <Container className="App">
-      <AppBar className={classes.root} position="sticky">
-        <Tabs value={value}
-          classes={{
-            indicator: classes.indicator
-          }}
-          className={classes.tabText}
-          onChange={handleChange} variant="fullWidth"
-          scrollButtons="auto">
-          <LinkTab label="Home" href="/" />
-          <LinkTab label="Who We Are" href="/about" />
-          <LinkTab label="Services" href="/services" />
-          <LinkTab label="Gallery" href="/gallery" />
-          <LinkTab label="Contact Us" href="/contact" />
-        </Tabs>
-      </AppBar>
-      <Grid container direction="column" spacing={4}>
-      <Grid item>
-        <TabPanel value={value} index={1}></TabPanel>
-      </Grid>
-      <Grid item>
-        <TabPanel value={value} index={2}></TabPanel>
-      </Grid>
-      <Grid item>
-        <TabPanel value={value} index={3}></TabPanel>
-      </Grid>
-      <Grid item>
-        <TabPanel value={value} index={4}></TabPanel>
-      </Grid>
-      </Grid>
-    </Container>
+    <Box className="App">
+      <ThemeProvider theme={theme}>
+        <Grid container justify="space-evenly">
+          <Grid>
+            <img className={classes.logo} alt={classes.logo} src={logoImg}/>
+          </Grid>
+          <Grid item>
+            <Typography variant="h4" className={classes.topHeading}>
+              GAGAN SHIPPING SERVICES
+            </Typography>
+          </Grid>
+          <Grid item>
+            <img className={classes.logo} alt={classes.logo} src={qrCodeImg}/>
+          </Grid>
+        </Grid>
+        <AppBar
+          className={classes.root} position="sticky">
+          <Tabs value={location.pathname}
+            variant="fullWidth"
+            classes={{
+              indicator: classes.indicator
+            }}
+          >
+            {tabs && tabs.length > 0 &&
+              tabs.map((t, index) => 
+                <Tab key={index} wrapped
+                  className={classes.tabText}
+                  label={t.name}
+                  value={t.route}
+                  component={Link}
+                  to={t.route}
+                />
+              )
+            }
+          </Tabs>
+          </AppBar>
+          <Switch>
+            {
+              tabs && tabs.length > 0 && tabs.map((t, idx) => {
+                return (
+                  <Route
+                    exact={idx === 0}
+                    key={idx}
+                    path={t.route}
+                    render={
+                      (props) =>
+                      <Grid container justify="center" spacing={3} style={{marginTop: '0.75rem'}}>
+                        <Grid item>
+                          <Box display="flex" role="tabpanel">
+                            {t.component}
+                          </Box>
+                        </Grid>
+                      </Grid>
+                    }
+                  />
+                )
+              })
+            }
+          </Switch>
+        </ThemeProvider>
+      </Box>
   );
 }
 
