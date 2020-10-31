@@ -1,9 +1,48 @@
 import React from 'react';
 import { Grid, Divider, Typography, Link, Paper, Box } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import contactImg from '../static/contact.webp';
+
+const useStyles = makeStyles(theme => ({
+  outerDiv: {
+    width: '100%',
+    display: 'grid',
+    height: '40%',
+    [theme.breakpoints.down('md')]: {
+      height: '20%',
+    },
+  },
+  imageText: {
+    position: 'absolute',
+    top: '20rem',
+    [theme.breakpoints.down('md')]: {
+      top: '16rem',
+      fontSize: 'x-large',
+    },
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#fff',
+  },
+  image: {
+    borderRadius: '3px',
+    maxWidth: '100%',
+    height: 'auto',
+    objectFit: 'cover',
+  },
+}));
 
 function Contact() {
+  const classes = useStyles();
   return (
-    <Grid container justify="center" spacing={2}>
+    <Grid container justify="center" spacing={2} alignContent="center">
+      <Grid item>
+        <Box className={classes.outerDiv}>
+          <img className={classes.image} src={contactImg} alt={"contact us"}/>
+          <Typography className={classes.imageText} variant="h2">Contact Us</Typography>
+        </Box>
+      </Grid>
         <Grid item>
             <Paper elevation={0}>
               <Box p={3}>

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import portImg from '../static/port-banner.webp';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   title: {
     fontWeight: 'bold',
   },
@@ -12,8 +13,50 @@ const useStyles = makeStyles({
   },
   textBold: {
     fontWeight: 'bold',
-  }
-});
+  },
+  outerDiv: {
+    width: '100%',
+    display: 'grid',
+    height: '40%',
+    [theme.breakpoints.down('md')]: {
+      height: '20%',
+    },
+  },
+  imageText: {
+    position: 'absolute',
+    top: '20rem',
+    [theme.breakpoints.down('md')]: {
+      top: '16rem',
+      fontSize: 'x-large',
+    },
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#fff',
+  },
+  imageSubtitle: {
+    position: 'absolute',
+    top: '30rem',
+    [theme.breakpoints.down('md')]: {
+      top: '23rem',
+      fontSize: 'medium',
+    },
+    left: '50%',
+    textAlign: 'center',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: '#000',
+    color: '#fff',
+    letterSpacing: '0.2rem',
+    fontWeight: 'lighter',
+  },
+  image: {
+    borderRadius: '3px',
+    maxWidth: '100%',
+    height: 'auto',
+    objectFit: 'cover',
+  },
+}));
 
 
 const quote = `"Whether you're a vessel
@@ -45,34 +88,45 @@ const p42 = ` believe in commitment to our customers in terms of services
 function About() {
   const classes = useStyles();
   return (
-    <Grid container justif="center" alignItems="center">
-        <Grid item >
-            <Typography align="center" style={{fontWeight: "bold"}} variant="h4">GAGAN SHIPPING SERVICES</Typography>
-            <Box p={3}>
-              <Typography className={classes.quote} align="center" variant="subtitle1">{quote}</Typography>
-            </Box>
-            <Typography align="center">{p1}</Typography>
-            <Box p={3}>
+    <Box display="grid">
+    <Box paddingBottom={3} className={classes.outerDiv}>
+      <img className={classes.image} alt={classes.image} src={portImg}/>
+      <Typography className={classes.imageText} variant="h2">India's leading shipping company</Typography>
+      <Typography variant="h5" className={classes.imageSubtitle}>
+        A name with a reputation in the shipping agency and it’s allied businesses
+      </Typography>
+    </Box>
+    <Grid container justify="center" alignItems="center">
+      <Grid item>
+      </Grid>
+      <Grid item >
+          <Typography align="center" style={{fontWeight: "bold"}} variant="h4">GAGAN SHIPPING SERVICES</Typography>
+          <Box p={3}>
+            <Typography className={classes.quote} align="center" variant="subtitle1">{quote}</Typography>
+          </Box>
+          <Typography align="center">{p1}</Typography>
+          <Box p={3}>
+          <Typography align="center">
+            {p2}
+          </Typography>
+          </Box>
+          <Box p={3}>
             <Typography align="center">
-              {p2}
+              {p31}
+              <Typography component="span" align="center" className={classes.textBold}>GSS</Typography>
+              {p32}
             </Typography>
-            </Box>
-            <Box p={3}>
-              <Typography align="center">
-                {p31}
-                <Typography component="span" align="center" className={classes.textBold}>GSS</Typography>
-                {p32}
-              </Typography>
-            </Box>
-            <Box p={3}>
-              <Typography align="center">
-                {p41}
-                <Typography component="span" align="center" className={classes.textBold}>GSS</Typography>
-                {p42}
-              </Typography>
-            </Box>
-        </Grid>
+          </Box>
+          <Box p={3}>
+            <Typography align="center">
+              {p41}
+              <Typography component="span" align="center" className={classes.textBold}>GSS</Typography>
+              {p42}
+            </Typography>
+          </Box>
+      </Grid>
     </Grid>
+    </Box>
   );
 }
 

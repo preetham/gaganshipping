@@ -10,7 +10,7 @@ import Services from './pages/Services';
 import logoImg from './static/logo.png';
 import qrCodeImg from './static/qrcode.png';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     background: '#fff',
     border: 0,
@@ -34,11 +34,25 @@ const useStyles = makeStyles({
     color: '#fec100',
     fontWeight: 'bold',
     marginTop: '1.4rem',
+    [theme.breakpoints.down('md')]: {
+      display: 'none',
+    },
   },
   logo: {
     height: '6rem',
   },
-});
+  bottomLogo: {
+    height: '3rem',
+  },
+  bottomText: {
+    marginTop: '2rem',
+  },
+  bottomGrid: {
+    borderTop: 'solid',
+    borderTopColor: '#fec100',
+    borderRadius: '3px',
+  },
+}));
 
 
 function App() {
@@ -121,7 +135,7 @@ function App() {
                     path={t.route}
                     render={
                       (props) =>
-                      <Grid container justify="center" spacing={3} style={{marginTop: '0.75rem'}}>
+                      <Grid container justify="center" spacing={3} style={{marginTop: '0.75rem', paddingBottom: '1rem'}}>
                         <Grid item>
                           <Box display="flex" role="tabpanel">
                             {t.component}
@@ -134,6 +148,20 @@ function App() {
               })
             }
           </Switch>
+        
+        <Grid container justify="space-between"
+            alignItems="center" className={classes.bottomGrid}>
+            <Grid item>
+              <img className={classes.bottomLogo} alt="bottomLogo" src={logoImg}/>
+            </Grid>
+            <Grid item>
+              <Box>
+                <Typography style={{paddingRight: "1rem"}}>
+                  © 2020 Gagan Shipping Services
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
         </ThemeProvider>
       </Box>
   );

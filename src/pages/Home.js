@@ -14,6 +14,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 345,
   },
   image: {
+    borderRadius: '3px',
     maxWidth: '100%',
     height: 'auto',
     objectFit: 'cover',
@@ -22,20 +23,22 @@ const useStyles = makeStyles(theme => ({
     position: 'absolute',
     top: '20rem',
     [theme.breakpoints.down('md')]: {
-      top: '30rem',
+      top: '16rem',
     },
     left: '50%',
     transform: 'translate(-50%, -50%)',
     fontWeight: 'bold',
+    textAlign: 'center',
     color: '#fff',
   },
   imageSubtitle: {
     position: 'absolute',
     top: '25rem',
     [theme.breakpoints.down('md')]: {
-      top: '40rem',
+      top: '24rem',
     },
     left: '50%',
+    textAlign: 'center',
     transform: 'translate(-50%, -50%)',
     backgroundColor: '#000',
     color: '#fff',
@@ -47,7 +50,7 @@ const useStyles = makeStyles(theme => ({
   },
   outerDiv: {
     width: '100%',
-    display: 'flex',
+    display: 'grid',
     height: '40%',
     [theme.breakpoints.down('md')]: {
       height: '20%',
@@ -104,22 +107,16 @@ const cardData = [
 export default function Home() {
   const classes = useStyles();
   return (
-    <Box>
+    <Box display="grid">
       <Box display="none">
         <a href="https://commons.wikimedia.org/wiki/File:Two_bunkering_tankers.jpg">The Great Stahl</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons
       </Box>
-      <Box display="none">
-        Photo by
-        <a href="https://unsplash.com/@renansavidan?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">RENAN SAVIDAN</a> on
-        <a href="https://unsplash.com/s/photos/container-ship?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>
-      </Box>
-      <Box paddingBottom={3} component="div" className={classes.outerDiv}>
-        <img className={classes.image} alt={classes.image} src={overheadImg}/>
-        <Typography variant="h2"
-          className={classes.imageText}>A Unique Service Offering</Typography>
-        <Typography variant="h5" className={classes.imageSubtitle}>
-          The most competitive, timely and reliable services
-        </Typography>
+      <Box paddingBottom={3} className={classes.outerDiv}>
+          <img className={classes.image} alt={classes.image} src={overheadImg}/>
+          <Typography className={classes.imageText} variant="h2">A Unique Service Offering</Typography>
+          <Typography variant="h5" className={classes.imageSubtitle}>
+            The most competitive, timely and reliable services
+          </Typography>
       </Box>
       <Grid container justify="center" spacing={2}>
         {cardData && cardData.length > 0 && cardData.map((d, index) => 
