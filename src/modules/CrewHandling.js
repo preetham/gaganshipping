@@ -1,7 +1,8 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import { List,
-  ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+  ListItem, ListItemText, ListItemIcon } from '@material-ui/core';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 const services = [
   "Issue of Letter of Invitations (LOI) to Owners/Crew Manning Agents to apply for TRANSIT VISA with Indian Embassies for incoming crew to arrive in India for joining vessels.",
@@ -12,14 +13,21 @@ const services = [
   "Arrangement of Air Tickets as and when required with low fares.",
 ]
 
+const useStyles = makeStyles((theme) => ({
+  bulletIcon: {
+    fontSize: 'small',
+  },
+}));
+
 export default function CrewHandling() {
+  const classes = useStyles();
   return (
     <List>
       {services && services.length > 0 && 
         services.map((text, index) => {
           return (
             <ListItem key={index}>
-              <ListItemIcon><ArrowRightIcon/></ListItemIcon>
+              <ListItemIcon><ArrowForwardIosIcon className={classes.bulletIcon}/></ListItemIcon>
               <ListItemText primary={text}>
               </ListItemText>
             </ListItem>

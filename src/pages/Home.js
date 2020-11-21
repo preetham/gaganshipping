@@ -25,6 +25,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('md')]: {
       top: '16rem',
     },
+    [theme.breakpoints.down('sm')]: {
+      top: '21rem',
+      fontSize: '1.6rem',
+    },
     left: '50%',
     transform: 'translate(-50%, -50%)',
     fontWeight: 'bold',
@@ -36,6 +40,10 @@ const useStyles = makeStyles(theme => ({
     top: '25rem',
     [theme.breakpoints.down('md')]: {
       top: '24rem',
+    },
+    [theme.breakpoints.down('sm')]: {
+      top: '28rem',
+      fontSize: '1rem',
     },
     left: '50%',
     textAlign: 'center',
@@ -54,6 +62,9 @@ const useStyles = makeStyles(theme => ({
     height: '40%',
     [theme.breakpoints.down('md')]: {
       height: '20%',
+    },
+    [theme.breakpoints.down('sm')]: {
+      height: '10%',
     },
   }
 }));

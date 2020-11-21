@@ -1,12 +1,20 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import { List, ListItemText, ListItem, ListItemIcon } from '@material-ui/core';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+
+const useStyles = makeStyles((theme) => ({
+  bulletIcon: {
+    fontSize: 'small',
+  },
+}));
 
 export default function Chartering() {
+  const classes = useStyles();
   return (
     <List>
         <ListItem>
-            <ListItemIcon><ArrowRightIcon/></ListItemIcon>
+          <ListItemIcon><ArrowForwardIosIcon className={classes.bulletIcon}/></ListItemIcon>
             <ListItemText primary="We trace out the
             cargoes available in Indian Market
             to export out of India and support the Ship

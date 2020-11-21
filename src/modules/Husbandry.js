@@ -1,7 +1,8 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import { List,
-  ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+  ListItem, ListItemText, ListItemIcon } from '@material-ui/core';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 const services = [
   "Receiving of Ship Spares at Airport and Clearing through Customs and placement of same onboard the vessel within short time.",
@@ -17,27 +18,22 @@ const services = [
   "Supply of dunnage material for steel cargo, sugar and rice vessels etc.",
 ]
 
+const useStyles = makeStyles((theme) => ({
+  bulletIcon: {
+    fontSize: 'small',
+  },
+}));
+
 
 export default function Husbandry() {
+  const classes = useStyles();
   return (
     <List>
-      {/* <ListItem>
-        <ListItemText primary="Giving top priority for the 
-        time and money are key considerations of masters,
-        owners and operators. Our ships supply services operate
-        24/7 with a standby for emergency response and management support.">
-        </ListItemText>
-      </ListItem>
-      <ListItem>
-        <Typography variant="h6">
-          We offer and arrange the following services:
-        </Typography>
-      </ListItem> */}
       {services && services.length > 0 && 
         services.map((text, index) => {
           return (
             <ListItem key={index}>
-              <ListItemIcon><ArrowRightIcon/></ListItemIcon>
+              <ListItemIcon><ArrowForwardIosIcon className={classes.bulletIcon}/></ListItemIcon>
               <ListItemText primary={text}>
               </ListItemText>
             </ListItem>

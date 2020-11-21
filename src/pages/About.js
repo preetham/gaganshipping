@@ -29,6 +29,10 @@ const useStyles = makeStyles(theme => ({
       top: '16rem',
       fontSize: 'x-large',
     },
+    [theme.breakpoints.down('sm')]: {
+      top: '20rem',
+      fontSize: '1.3rem',
+    },
     left: '50%',
     transform: 'translate(-50%, -50%)',
     fontWeight: 'bold',
@@ -40,7 +44,11 @@ const useStyles = makeStyles(theme => ({
     top: '30rem',
     [theme.breakpoints.down('md')]: {
       top: '23rem',
-      fontSize: 'medium',
+      fontSize: '1rem',
+    },
+    [theme.breakpoints.down('sm')]: {
+      top: '25rem',
+      fontSize: '0.7rem',
     },
     left: '50%',
     textAlign: 'center',

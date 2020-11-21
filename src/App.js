@@ -2,6 +2,8 @@ import React from 'react';
 import { Switch, Route, Link, useLocation } from "react-router-dom";
 import { Box, AppBar, Grid, Tab, Tabs, Typography } from '@material-ui/core';
 import { makeStyles, responsiveFontSizes, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import PhoneOutlinedIcon from '@material-ui/icons/PhoneOutlined';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
@@ -17,7 +19,6 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 3,
     color: '#1f4da1',
     height: 48,
-    padding: '0 30px',
   },
   indicator: {
     backgroundColor: '#fec100'
@@ -39,10 +40,16 @@ const useStyles = makeStyles(theme => ({
     },
   },
   logo: {
-    height: '6rem',
+    height: '5rem',
+    [theme.breakpoints.down('sm')]: {
+      height: '3rem',
+    },
   },
   bottomLogo: {
-    height: '3rem',
+    height: '5rem',
+    [theme.breakpoints.down('sm')]: {
+      height: '3rem',
+    },
   },
   bottomText: {
     marginTop: '2rem',
@@ -51,6 +58,22 @@ const useStyles = makeStyles(theme => ({
     borderTop: 'solid',
     borderTopColor: '#fec100',
     borderRadius: '3px',
+  },
+  topBar: {
+    backgroundColor: '#fec100',
+    borderRadius: '3px',
+    padding: '0.2rem',
+  },
+  topText: {
+    display: 'flex',
+    alignItems: 'center',
+    color: '#021e52',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '0.9rem',
+    },
+  },
+  topLogo: {
+    height: '6rem',
   },
 }));
 
@@ -91,17 +114,27 @@ function App() {
   return (
     <Box className="App">
       <ThemeProvider theme={theme}>
-        <Grid container justify="space-evenly">
+        <Grid container spacing={2} justify="flex-end" className={classes.topBar}>
+          <Grid item>
+            <Typography className={classes.topText}>
+              Have any enquiry? 24/7
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography className={classes.topText}><MailOutlineIcon className={classes.topText}/> gagan@gaganship.com </Typography>
+          </Grid>
+          <Grid item>
+            <Typography className={classes.topText}><PhoneOutlinedIcon className={classes.topText}/> +91-98661-05677</Typography>
+          </Grid>
+        </Grid>
+        <Grid container justify="center">
           <Grid>
-            <img className={classes.logo} alt={classes.logo} src={logoImg}/>
+            <img className={classes.topLogo} alt={classes.topLogo} src={logoImg}/>
           </Grid>
           <Grid item>
             <Typography variant="h4" className={classes.topHeading}>
               GAGAN SHIPPING SERVICES
             </Typography>
-          </Grid>
-          <Grid item>
-            <img className={classes.logo} alt={classes.logo} src={qrCodeImg}/>
           </Grid>
         </Grid>
         <AppBar
@@ -149,7 +182,7 @@ function App() {
             }
           </Switch>
         
-        <Grid container justify="space-between"
+        <Grid container justify="space-around"
             alignItems="center" className={classes.bottomGrid}>
             <Grid item>
               <img className={classes.bottomLogo} alt="bottomLogo" src={logoImg}/>
@@ -160,6 +193,9 @@ function App() {
                   © 2020 Gagan Shipping Services
                 </Typography>
               </Box>
+            </Grid>
+            <Grid item>
+              <img className={classes.logo} alt={classes.logo} src={qrCodeImg}/>
             </Grid>
           </Grid>
         </ThemeProvider>

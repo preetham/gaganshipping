@@ -1,7 +1,7 @@
 import React from 'react';
-import { Grid, Divider, Typography, Link, Paper, Box } from '@material-ui/core';
+import { Grid, Divider, Typography, Link, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import contactImg from '../static/contact.webp';
+import contactImg from '../static/contact.jpg';
 
 const useStyles = makeStyles(theme => ({
   outerDiv: {
@@ -14,12 +14,12 @@ const useStyles = makeStyles(theme => ({
   },
   imageText: {
     position: 'absolute',
-    top: '20rem',
+    top: '25rem',
     [theme.breakpoints.down('md')]: {
-      top: '16rem',
+      top: '19rem',
       fontSize: 'x-large',
     },
-    left: '50%',
+    left: '20%',
     transform: 'translate(-50%, -50%)',
     fontWeight: 'bold',
     textAlign: 'center',
@@ -36,6 +36,7 @@ const useStyles = makeStyles(theme => ({
 function Contact() {
   const classes = useStyles();
   return (
+    <div>
     <Grid container justify="center" spacing={2} alignContent="center">
       <Grid item>
         <Box className={classes.outerDiv}>
@@ -43,8 +44,9 @@ function Contact() {
           <Typography className={classes.imageText} variant="h2">Contact Us</Typography>
         </Box>
       </Grid>
+      </Grid>
+      <Grid container justify="center" spacing={2} alignContent="center">
         <Grid item>
-            <Paper elevation={0}>
               <Box p={3}>
               <Typography variant="h5">Gagan Shipping Services</Typography>
               <Typography>
@@ -67,13 +69,11 @@ function Contact() {
                 <Link href="mailto:crew@gaganship.com">crew@gaganship.com</Link>
               </Typography>
         </Box>
-        </Paper>
         </Grid>
         <Grid item>
           <Divider orientation="vertical" />
         </Grid>
         <Grid item>
-          <Paper elevation={0}>
               <Box p={3}>
                 <Typography variant="h5">
                     Contact Persons
@@ -99,9 +99,9 @@ function Contact() {
                   <Link href="tel:+91-81434-71234">+91-81434-71234</Link>
                 </Typography>
           </Box>
-        </Paper>
         </Grid>
     </Grid>
+    </div>
   );
 }
 

@@ -1,7 +1,8 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import { List,
   ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 const services = [
   "We provide agency services and shipping expertise to local and foreign ship owning, trading, and industry interests. We ensure vessels a fast turnaround, covering bunkering, stores, spares and repairs, cash advances, attending to crew change and timely support of all other required activities with maximum efficiency at appropriate cost.",
@@ -23,14 +24,22 @@ const services = [
   "Contacting shippers and the receivers of the goods.",
 ]
 
+const useStyles = makeStyles((theme) => ({
+  bulletIcon: {
+    fontSize: 'small',
+  },
+}));
+
 export default function PortAgency() {
+  const classes = useStyles();
   return (
     <List component="nav">
       {services && services.length > 0 && 
         services.map((text, index) => {
           return (
             <ListItem key={index}>
-              <ListItemIcon><ArrowRightIcon/></ListItemIcon>
+              {/* <ListItemIcon><ArrowRightIcon/></ListItemIcon> */}
+              <ListItemIcon><ArrowForwardIosIcon className={classes.bulletIcon}/></ListItemIcon>
               <ListItemText primary={text}></ListItemText>
             </ListItem>
           );
