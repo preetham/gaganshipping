@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Divider, Typography, Link, Box } from '@material-ui/core';
+import { Grid, Typography, Box, Card, CardContent } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import contactImg from '../static/contact.jpg';
 
@@ -37,7 +37,7 @@ function Contact() {
   const classes = useStyles();
   return (
     <div>
-    <Grid container justify="center" spacing={2} alignContent="center">
+    <Grid container justify="center" spacing={1} alignContent="center">
       <Grid item>
         <Box className={classes.outerDiv}>
           <img className={classes.image} src={contactImg} alt={"contact us"}/>
@@ -45,60 +45,57 @@ function Contact() {
         </Box>
       </Grid>
       </Grid>
-      <Grid container justify="center" spacing={2} alignContent="center">
-        <Grid item>
-              <Box p={3}>
-              <Typography variant="h5">Gagan Shipping Services</Typography>
-              <Typography>
-                  Door No: 39-9-9,<br/>
-                  Tenneti Nagar, Murali Nagar,<br/>
+      <Grid container style={{marginTop: '1rem', marginBottom: '2rem'}} justify="center" alignItems="flex-start" spacing={2}>
+        <Grid item xs={6}>
+          <Card variant="outlined">
+            <CardContent>
+              <Typography variant="h6" component="h2">Gagan Shipping Services</Typography>
+              <Typography gutterBottom variant="body2">
+                  Door No: 39-9-9,
+                  Tenneti Nagar, Murali Nagar,
                   Visakhapatnam – 530007.
-              </Typography>
-              <br/>
-              <Typography>
-                Telephone:&nbsp;
-                <Link href="tel:+91–891–2540468">+91-891–2540468</Link>
-              </Typography>
-              <Typography>
-                Mobile:&nbsp;
-                <Link href="tel:+91-98661–05677">+91-98661–05677</Link>
-              </Typography>
-              <Typography>
-                Email:&nbsp;
-                <Link href="mailto:gagan@gaganship.com">gagan@gaganship.com</Link>,<br/>
-                <Link href="mailto:crew@gaganship.com">crew@gaganship.com</Link>
-              </Typography>
-        </Box>
+                </Typography>
+                <Typography gutterBottom variant="body2">
+                  Telephone: +91-891–2540468
+                  </Typography>
+                  <Typography gutterBottom variant="body2">
+                  Mobile: +91-98661–05677
+                  </Typography>
+                  <Typography variant="body2">
+                  Email: gagan@gaganship.com
+                  </Typography>
+                  <Typography variant="body2">
+                  crew@gaganship.com
+                  </Typography>
+            </CardContent>
+          </Card>
         </Grid>
-        <Grid item>
-          <Divider orientation="vertical" />
-        </Grid>
-        <Grid item>
-              <Box p={3}>
-                <Typography variant="h5">
-                    Contact Persons
-                </Typography>
-                <Typography variant="h6">
-                  G.G. Rao
-                </Typography>
-                <Typography variant="subtitle1">
-                  <Link href="tel:+91-98661–05677">+91-98661–05677</Link>
-                </Typography>
-                <Typography variant="h6">
-                  G.S.P. Kumar
-                </Typography>
-                <Typography variant="subtitle1">
-                  Mobile:&nbsp;
-                  <Link href="tel:+91-93479-53664">+91-93479-53664</Link>
-                </Typography>
-                <Typography variant="h6">
-                  G. Kushal Vivek
-                </Typography>
-                <Typography variant="subtitle1">
-                  Mobile:&nbsp;
-                  <Link href="tel:+91-81434-71234">+91-81434-71234</Link>
-                </Typography>
-          </Box>
+        <Grid item xs={6}>
+          <Card variant="outlined">
+            <CardContent>
+              <Typography gutterBottom variant="h6" component="h2">
+                  Contact Persons
+              </Typography>
+              <Typography>
+                G.G. Rao
+              </Typography>
+              <Typography gutterBottom variant="body2">
+                Mobile: +91-98661–05677
+              </Typography>
+              <Typography>
+                G.S.P. Kumar
+              </Typography>
+              <Typography gutterBottom variant="body2">
+                Mobile: +91-93479-53664
+              </Typography>
+              <Typography>
+                G. Kushal Vivek
+              </Typography>
+              <Typography variant="body2">
+                Mobile: +91-81434-71234
+              </Typography>
+            </CardContent>
+          </Card>
         </Grid>
     </Grid>
     </div>

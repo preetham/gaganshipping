@@ -46,11 +46,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const tabs = {
-  0: PortAgency,
-  1: Chartering,
-  2: CrewHandling,
-  3: Husbandry,
-  4: Bunkering,
+  0: {
+    component: PortAgency,
+    name: 'Port Agency',
+  },
+  1: {
+    component: Chartering,
+    name: 'Chartering',
+  },
+  2: {
+    component: CrewHandling,
+    name: 'Crew Handling',
+  },
+  3: {
+    component: Husbandry,
+    name: 'Husbandry',
+  },
+  4: {
+    component: Bunkering,
+    name: 'Bunkering',
+  },
 }
 
 function TabPanel(props) {
@@ -64,7 +79,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        tabs[index]()
+        tabs[index]['component']()
       )}
     </Box>
   );
@@ -82,7 +97,7 @@ function Services() {
             <Grid item>
               <Box paddingBottom={3} className={classes.outerDiv}>
                 <img className={classes.image} alt="services" src={servicesImg}/>
-                <Typography className={classes.imageText} variant="h2">Services</Typography>
+                <Typography className={classes.imageText} variant="h2">{tabs[value]['name']}</Typography>
               </Box>
             </Grid>
           </Grid>

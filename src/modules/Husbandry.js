@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { List,
   ListItem, ListItemText, ListItemIcon } from '@material-ui/core';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
 const services = [
   "Receiving of Ship Spares at Airport and Clearing through Customs and placement of same onboard the vessel within short time.",
@@ -21,6 +21,7 @@ const services = [
 const useStyles = makeStyles((theme) => ({
   bulletIcon: {
     fontSize: 'small',
+    color: 'black',
   },
 }));
 
@@ -33,7 +34,7 @@ export default function Husbandry() {
         services.map((text, index) => {
           return (
             <ListItem key={index}>
-              <ListItemIcon><ArrowForwardIosIcon className={classes.bulletIcon}/></ListItemIcon>
+              <ListItemIcon><FiberManualRecordIcon className={classes.bulletIcon}/></ListItemIcon>
               <ListItemText primary={text}>
               </ListItemText>
             </ListItem>
