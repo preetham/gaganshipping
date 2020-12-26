@@ -141,6 +141,8 @@ function App() {
           className={classes.root} position="sticky">
           <Tabs value={location.pathname}
             variant="fullWidth"
+            scrollButtons='off'
+            centered
             classes={{
               indicator: classes.indicator
             }}

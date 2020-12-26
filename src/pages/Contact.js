@@ -45,7 +45,7 @@ function Contact() {
         </Box>
       </Grid>
       </Grid>
-      <Grid container style={{marginTop: '1rem', marginBottom: '2rem'}} justify="center" alignItems="flex-start" spacing={2}>
+      <Grid container style={{marginTop: '1rem', marginBottom: '2rem'}} justify="center" alignItems="flex-start" spacing={1}>
         <Grid item xs={6}>
           <Card variant="outlined">
             <CardContent>
